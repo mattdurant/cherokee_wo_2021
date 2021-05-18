@@ -1,0 +1,112 @@
+<html>
+    <head>
+        <title>Wear Orange - Cherokee County</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+        <script src="jq.js"></script>
+        <style type="text/css">
+
+            html, body {
+                margin: 0;
+            }
+
+            html {padding:0;}
+
+            body {
+                padding: 10px;
+                background-color: rgb(249, 157, 37);
+                font-family: Verdana, Arial, Helvetica, sans-serif;
+            }
+
+            #main {
+                width: 100%;
+                height: 98%;
+            }
+
+            #bgimage {
+                max-width: 100%;
+            }
+
+            #text1 {
+                color: #000;
+                position: absolute;
+                top: 20px;
+                left: 20px;
+            }
+
+            #text1.pc {
+                
+                max-width: 45%;
+                font-size: 1.5em;
+            }
+
+            #text1.mobile {
+                right: 20px;
+                font-size: 1.5em;
+            }
+
+            #text2.pc {
+                text-align: right;
+                position: absolute;
+                bottom: 20px;
+                right: 20px;
+                font-size: 2em;
+            }
+
+            #text2.mobile {
+                text-align: right;
+                position: absolute;
+                bottom: 20px;
+                right: 20px;
+                font-size: 2em;
+            }
+
+        </style>
+        <script type="text/javascript">
+            var $text1;
+            var $container;
+            var $bgimage;
+            function resize() {
+                if( !$text1 ) { $text1 = $("#text1"); }
+                if ( !$container ) { $container = $("#main"); }
+                if ( !$bgimage ) { $bgimage = $("#bgimage"); }
+                var ratio = $container.width() / $container.height();
+                //$("#debug").html(ratio);
+                if( ratio >= 1 ) {
+                    $(".text").addClass("pc").removeClass("mobile");
+                    //$text1.addClass("text1_pc");
+                    //$text1.removeClass("text1_mobile");
+                    
+                } else {
+                    $(".text").removeClass("pc").addClass("mobile");
+                    //$text1.removeClass("text1_pc");
+                    //$text1.addClass("text1_mobile");
+                    //$bgimage.css("margin-top", 0);
+                    
+                }
+                $bgimage.css("margin-top", $container.height() / 2 - $bgimage.height() / 2);
+                
+                //get size of body
+                //if height > width, do 1-2-3 layout
+                //if width > height, do normal layout
+            }
+        </script>
+    </head>
+    <body onresize="resize();" onload="resize();">
+        <div id="main">
+            <img id="bgimage" src="background.png" />
+            <div id="text1" class="text">
+                Orange is the color that Hadiya Pendleton’s friends wore in her honor when she was shot and killed in Chicago at the age of 15. After her death, they asked us to stand up, speak out, and Wear Orange to raise awareness about gun violence.
+
+                <br /><br />Join us on June 5th at the Woodstock Amphitheater (near the water fountain) between 11am - 3pm for a rock to hide in Cherokee County on a walk in remembrance of Hadiya and other victims of gun violence.<br /><br />You can also grab a list of businesses in downtown Woodstock to visit for a chance to win a prize in a selfie contest!  
+                
+            </div>
+            <div id="text2" class="text">
+                <a href="https://wearorange.org/">wearorange.org</a><br /><br />
+                <a href="https://momsdemandaction.org/">momsdemandaction.org</a><br /><br />
+                <a href="https://www.everytown.org/">everytown.org</a>
+                
+                
+            </div>
+        </div>
+    </body>
+</html>
